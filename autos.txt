@@ -1,0 +1,46 @@
+ANTES:
+
+declare
+fun {Auto Marca}
+   local M LeerMarca LeerPotencia in
+      M := Marca
+      fun {LeerMarca}
+	 {Access M}
+      end
+
+      fun {LeerPotencia}
+	 {Access M}
+      end
+      autos(leer:LeerMarca potencia:LeerPotencia)
+   end
+end
+
+declare
+Auto1={Auto m}
+{Browse {Auto1.marca}}
+
+
+
+DESPUÉS:
+
+declare
+fun{Auto}
+   local M P AsignarMarca AsignarPotencia in
+      fun{AsignarMarca Marca}
+	 M=Marca
+      end
+      fun{AsignarPotencia Potencia}
+	 P=Potencia
+      end 
+      autos(marca:AsignarMarca potencia:AsignarPotencia)
+   end
+end
+
+declare
+Auto1={Auto}
+Auto2={Auto}
+Auto3={Auto}
+
+{Browse [{Auto1.marca 'Mazda'} {Auto1.potencia 3000}]}
+{Browse [{Auto2.marca 'BMW'} {Auto2.potencia 2500}]}
+{Browse [{Auto3.marca 'Ford'} {Auto3.potencia 1125}]}
